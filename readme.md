@@ -20,5 +20,6 @@
     ```
     ansible-playbook playbook.yml
     ```
+- Reboot every single machine
 
 &copy; 2022 [Andi Susanto](https://jurnal.batutah.id)
