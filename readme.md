@@ -14,6 +14,7 @@
 - Clone this repo
 - Prepare inventoy file `hosts.ini`
 - Adjust file `playbook.yml`
+    - Rename every string `pod-batutah.id` with yours.
 - Run command
     ```
     ansible-playbook playbook.yml
