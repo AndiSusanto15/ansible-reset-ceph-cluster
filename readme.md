@@ -15,6 +15,7 @@
 - Prepare inventoy file `hosts.ini`
 - Adjust file `playbook.yml`
     - Rename every string `pod-batutah.id` with yours.
+    - Change vars `fsid`, check with this command `cat /etc/ceph/ceph.conf`
 - Run command
     ```
     ansible-playbook playbook.yml
