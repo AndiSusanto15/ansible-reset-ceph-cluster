@@ -1,0 +1,48 @@
+---
+- hosts: pod-batutah.id-ceph1
+  become: true
+  vars:
+    fsid: be3391f4-ba75-11ec-bbac-7ddc37e4bb8b
+    cluster-hosts:
+      - pod-batutah.id-ceph3
+      - pod-batutah.id-ceph2
+      - pod-batutah.id-ceph1
+
+  tasks:
+    - name: Remove the cluster hosts
+      shell: "ceph orch host rm {{ item }}"
+      with_items: "{{ cluster-hosts }}"
+
+    - name: Check if there is ceph daemon running
+      shell: ceph orch ps pod-batutah.id-ceph1
+      register: daemon_stat
+
+    - debug:
+        var: daemon_stat
+
+    - name: Remove the ceph storage cluster
+      shell: "cephadm rm-cluster --fsid {{ fsid }} --force"
+
+- hosts: all
+  become: true
+  tags: remove-conf
+  tasks:
+
+    - name: Remove config systemd
+      shell: rm -rf /etc/systemd/system/ceph*
+
+    - name: Cleanup the ceph configuration files
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /etc/ceph
+        - /var/lib/ceph
+        - /var/lib/cephadm
+        - /var/lib/certmonger
+
+    - name: Cleanup the ceph block devices vdb
+      shell: dd if=/dev/zero of=/dev/vdb bs=1M count=1000
+
+    - name: Cleanup the ceph block devices vdc
+      shell: dd if=/dev/zero of=/dev/vdc bs=1M count=1000
