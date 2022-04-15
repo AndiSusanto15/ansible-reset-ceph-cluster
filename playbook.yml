@@ -3,7 +3,7 @@
   become: true
   vars:
     fsid: be3391f4-ba75-11ec-bbac-7ddc37e4bb8b
-    cluster-hosts:
+    cluster_hosts:
       - pod-batutah.id-ceph3
       - pod-batutah.id-ceph2
       - pod-batutah.id-ceph1
@@ -11,7 +11,7 @@
   tasks:
     - name: Remove the cluster hosts
       shell: "ceph orch host rm {{ item }}"
-      with_items: "{{ cluster-hosts }}"
+      with_items: "{{ cluster_hosts }}"
 
     - name: Check if there is ceph daemon running
       shell: ceph orch ps pod-batutah.id-ceph1
