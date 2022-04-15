@@ -5,6 +5,7 @@
 
 ## How to use
 
+- Run with user `ceph-adm`
 - Set up passwordless to another machine
 - Install ansible in `pod-<username>-ceph1` 
     ```
@@ -12,10 +13,10 @@
     ```
 - Clone this repo
 - Prepare inventoy file `hosts.ini`
-- Check file `playbook.yml`
+- Adjust file `playbook.yml`
 - Run command
     ```
     ansible-playbook playbook.yml
     ```
 
-&copy; [Andi Susanto](https://jurnal.batutah.id)
+&copy; 2022 [Andi Susanto](https://jurnal.batutah.id)
