@@ -13,9 +13,9 @@
     ```
 - Clone this repo
     ```
-    - cd ~
-    - git clone https://github.com/AndiSusanto15/ansible-reset-ceph-cluster.git ansible
-    - cd ansible
+    cd ~
+    git clone https://github.com/AndiSusanto15/ansible-reset-ceph-cluster.git ansible
+    cd ansible
     ```
 - Prepare inventoy file `hosts.ini`
 - Adjust file `playbook.yml`
